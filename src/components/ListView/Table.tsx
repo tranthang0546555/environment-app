@@ -93,12 +93,12 @@ function Table(props: Props) {
       }
 
       <ReactPaginate
-        initialPage={currentPage}
+        initialPage={currentPage - 1}
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={2}
-        marginPagesDisplayed={1}
+        marginPagesDisplayed={3}
         pageCount={pageCount}
         previousLabel="<"
         pageClassName="page-item"

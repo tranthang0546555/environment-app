@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { TREE_DETAIL, useApi } from "../../api";
 import { Field, FormBase } from "../../components/FormBase";
+import { useNavigate } from "react-router-dom";
 
 type Input = {
   treeId?: string;
   note?: string;
 };
 export const DetailTree = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<Input | null>(null);
 
   const fetch = async () => {
@@ -60,5 +62,12 @@ export const DetailTree = () => {
     },
   ];
 
-  return <FormBase fields={fields} mode="view" />;
+  return (
+    <FormBase
+      fields={fields}
+      mode="view"
+      onCancel={() => navigate("/manage-tree")}
+      navigateUpdate={() => navigate(`/manage-tree/${data?.treeId}/update`)}
+    />
+  );
 };

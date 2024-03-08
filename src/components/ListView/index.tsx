@@ -9,7 +9,7 @@ type DataResponse = {
   data: [];
   page: number;
   size: number;
-  total: number;
+  pageCount: number;
 };
 
 type Props = {
@@ -31,7 +31,7 @@ export const ListView = (props: Props) => {
     try {
       const res = await useApi.get(listURL);
       const data = await res.data;
-      setData({ data: data, page: 1, size: 1, total: 1 }); //TODO when api-endpoint updated, set Data
+      setData({ data: data, page: 1, size: 1, pageCount: 1 }); //TODO when api-endpoint updated, set Data
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +53,7 @@ export const ListView = (props: Props) => {
           data={data?.data}
           currentPage={data?.page}
           loading={loading}
-          pageCount={data?.total}
+          pageCount={data?.pageCount}
           columns={columns}
         />
       </div>

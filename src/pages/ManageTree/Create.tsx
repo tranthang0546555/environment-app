@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Field, FormBase } from "../../components/FormBase";
 
 export const CreateTree = () => {
+  const navigate = useNavigate();
+
   const fields: Field[] = [
     {
       label: "Mã cây",
@@ -41,5 +44,11 @@ export const CreateTree = () => {
     console.log("CreateTree", data);
   };
 
-  return <FormBase fields={fields} onSave={handleSubmit} />;
+  return (
+    <FormBase
+      fields={fields}
+      onSave={handleSubmit}
+      onCancel={() => navigate("/manage-tree")}
+    />
+  );
 };
